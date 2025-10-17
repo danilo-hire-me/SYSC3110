@@ -1,25 +1,18 @@
-import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
-public class AddressBook {
+public class AddressBook extends DefaultListModel<BuddyInfo> {
 
-    private ArrayList<BuddyInfo> buddyInfos;
-
-    public AddressBook(){
-        buddyInfos = new ArrayList<>();
+    public void addBuddy(BuddyInfo buddy) {
+        if (buddy != null) {
+            this.addElement(buddy);
+        }
     }
 
-    public void addBuddy(BuddyInfo buddy){
-        buddyInfos.add(buddy);
+    public void removeBuddy(BuddyInfo buddy) {
+        this.removeElement(buddy);
     }
-    public void removeBuddy(BuddyInfo buddy){
-            buddyInfos.remove(buddy);        }
 
-
-    public static void main(String[] args) {
-        BuddyInfo buddy = new BuddyInfo("Tom");
-        AddressBook addressBook = new AddressBook();
-        addressBook.addBuddy(buddy);
-        addressBook.removeBuddy(buddy);
-        System.out.println("Address Book test push");
+    public void clearBook() {
+        this.clear();
     }
 }
